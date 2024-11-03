@@ -7,6 +7,8 @@
 const updater = require("electron-simple-updater");
 
 const {dialog, app, BrowserWindow, Menu, localShortcut, TouchBar, nativeImage, ipcMain} = require('electron');
+const remoteMain = require('@electron/remote/main');
+remoteMain.initialize();
 const {TouchBarButton, TouchBarLabel, TouchBarGroup, TouchBarSpacer} = TouchBar;
 const windowStateKeeper = require('electron-window-state');
 const path = require('path');
@@ -167,11 +169,14 @@ app.on('ready', function() {
         minWidth:720,
         titleBarStyle:titleBar,
         show:false,
-        backgroundColor: "#181818",    
+        backgroundColor: "#181818",
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            contextIsolation: false
         }
     });
+    remoteMain.enable(win.webContents);
 
     tnoodleWin = new BrowserWindow({
         height:10,
@@ -181,11 +186,14 @@ app.on('ready', function() {
         minHeight:10,
         minWidth:10,
         show:false,
-        backgroundColor: "#181818",    
+        backgroundColor: "#181818",
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            contextIsolation: false
         }
     });
+    remoteMain.enable(tnoodleWin.webContents);
 
 
     win.loadURL(url.format({
@@ -206,7 +214,7 @@ app.on('ready', function() {
             win.webContents.send('update', "update");
         });
     });
-    
+
     mainWindowState.manage(win);
 
     Menu.setApplicationMenu(menu);

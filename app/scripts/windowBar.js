@@ -4,18 +4,18 @@
 // Created by Dallas McNeil
 
 var windowBar = function() {
-    
+
     // If the windowbar is hidden
     var hiddenWindowBar = false;
 
     // Allow windowbar to be large if MacOS
-    if (require('electron').remote.getGlobal('appDetails').titleBar === "hidden") {
+    if (require('@electron/remote').getGlobal('appDetails').titleBar === "hidden") {
         hiddenWindowBar = true;
         $('#titleBarStyle')[0].href = "styles/macWindowBar.css";
     }
 
-    // Make large windowbar when not fullscreen 
-    require('electron').ipcRenderer.on('fullscreen', function(event, message) { 
+    // Make large windowbar when not fullscreen
+    require('electron').ipcRenderer.on('fullscreen', function(event, message) {
         if (!hiddenWindowBar) {
             if (message === "enter") {
                 $('#titleBarStyle')[0].href = "styles/standardWindowBar.css";
@@ -24,7 +24,7 @@ var windowBar = function() {
             }
         }
     })
-    
+
     function resizeWindowBar(factor) {
         if (hiddenWindowBar) {
             $("#windowBar").css("height", (22 / factor) + "px");
@@ -33,9 +33,8 @@ var windowBar = function() {
             $("#stats").css("height", (5 + (22 / factor)) + "px");
         }
     }
-    
+
     return {
         resizeWindowBar:resizeWindowBar
     }
 }()
-
