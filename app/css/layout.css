@@ -72,7 +72,7 @@ body {
     width:100vw;
     height:22px;
     z-index: -5;
-    background-color: #202020; 
+    background-color: #202020;
     cursor:pointer;
 }
 
@@ -142,7 +142,7 @@ body {
     margin-left:25vw;
     width: 50vw;
     margin-top:0vmin;
-    
+
 }
 
 #announcement {
@@ -175,9 +175,6 @@ body {
     width: 30px;
     height: 100%;
     display: block;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0' y='0' width='24' height='24' viewBox='0 0 24 24'><polyline stroke-width='0' cap='square' fill='%23FFF' stroke='%23F0F0F0' points='8,12 16,4 16,20'></polyline></svg>");
-    background-position: 100% 50%;
-    background-repeat: no-repeat;
 }
 
 #scrambleNext {
@@ -187,9 +184,6 @@ body {
     width: 30px;
     height: 100%;
     display: block;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0' y='0' width='24' height='24' viewBox='0 0 24 24'><polyline stroke-width='0' cap='square' fill='%23FFF' stroke='%23F0F0F0' points='16,12 8,4 8,20'></polyline></svg>");
-    background-position: 100% 50%;
-    background-repeat: no-repeat;
 }
 
 #scramble {
@@ -272,7 +266,7 @@ button:active {
     display: block;
     width:30px;
     height:30px;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='26' height='26' viewBox='0 0 24 24'><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='6,6 18,18'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='18,6 6,18'></polyline></svg>"); 
+
     background-color: #303030;
 }
 
@@ -280,8 +274,7 @@ button:active {
     width:30px;
     margin-left: 10px;
     margin-top: 0px;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0' y='0' width='24' height='24' viewBox='0 0 24 24'><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='4,12 6,12'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='4,6 6,6'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='4,18 6,18'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='8,12 20,12'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='8,6 20,6'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='8,18 20,18'></polyline></svg>");
-    
+
     background-size: contain;
     padding: 0px;
     position: absolute;
@@ -300,13 +293,11 @@ button:active {
     position: fixed;
     right:324px;
     bottom:10px;
-    background: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><circle cx='12' cy='12' r='5' stroke='%23F0F0F0' stroke-width='3' fill='none'></circle><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='12,3 12,6'></polyline><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='12,21 12,18'></polyline><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='3,12 6,12'></polyline><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='21,12 18,12'></polyline><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='18.2,5.8 16,8'></polyline><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='5.8,18.2 8,16'></polyline><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='5.8,5.8 8,8'></polyline><polyline stroke-width='3.5' cap='square' fill='none' stroke='%23F0F0F0' points='18.2,18.2 16,16'></polyline></svg>"); 
     padding: 0px;
 }
 
 #previewButton {
     right: 364px;
-    background: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='24' height='24' viewBox='0 0 24 24'><polyline stroke-width='0' cap='square' fill='%23FFF' stroke='%23FFF' points='4,7 4,17 16,17 16,14 20,16 20,8 16,10 16,7'></polyline></svg>");
 }
 
 
@@ -351,7 +342,7 @@ button:active {
     opacity:0.4;
     transition:0.2s;
 }
- 
+
 button.disabled:hover {
     cursor: default;
     border-color: #606060;
@@ -377,8 +368,7 @@ select {
     font-family: workSans;
     font-size: 18px;
     color:#F0F0F0;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='26' height='26' viewBox='0 0 24 24'><path fill='%23F0F0F0' d='M7.406 7.828l4.594 4.594 4.594-4.594 1.406 1.406-6 6-6-6z'></path></svg>"); 
-    
+
     background-color: #303030;
     background-position: 100% 50%;
     background-repeat: no-repeat;
@@ -469,7 +459,7 @@ input[type="text"],textarea {
     border: 2px solid #606060;
     border-bottom: 0;
     transition:0.1s;
-} 
+}
 
 #sessionStats {
     width:280px;
@@ -580,7 +570,7 @@ table td:first-child {
 
 #sessionRecords td:nth-child(2):hover {
     background: #202020;
-}    
+}
 
 #sessionRecordsHeader td:nth-child(3), #sessionRecords td:nth-child(3) {
     width:82px;
@@ -650,7 +640,7 @@ td p {
 
 #dialogScramble {
     padding:10px;
-    padding-top:0px;  
+    padding-top:0px;
 }
 
 #dialogCSTimer,#dialogAddTime, #dialogTransferSession {
@@ -817,8 +807,6 @@ input[type="checkbox"].disabled {
 }
 
 input[type="checkbox"]:checked {
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0' y='0' width='24' height='24' viewBox='0 0 24 24'><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='4,11 10,17 20,7'></polyline></svg>");
-    background-position: 45% 50%;
 }
 
 input[type="checkbox"]:hover {
@@ -930,6 +918,13 @@ ul {
     position:fixed;
     bottom:10px;
     right:50px;
+    z-index:-1;
+}
+
+#toolSelectLabel {
+    position:fixed;
+    bottom:15px;
+    right:60px;
 }
 
 #tools {
@@ -980,14 +975,11 @@ ul {
     position: fixed;
     right:10px;
     bottom:10px;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='26' height='26' viewBox='0 0 24 24'><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='12,6 12,18'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='6,12 18,12'></polyline></svg>"); 
     background-color: #303030;
     padding: 0px;
 }
 
 #previewButton.loading {
-    background: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0' y='0' width='24' height='24' viewBox='0 0 24 24'><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='2,12 8,12'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='22,12 16,12'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='12,2 12,8'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='12,22 12,16'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='5,5 9,9'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='19,19 15,15'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='5,19 9,15'></polyline><polyline stroke-width='2' cap='square' fill='none' stroke='%23FFF' points='19,5 15,9'></polyline></svg>");
-    background-position: 45% 50%;
     background-color: #282828;
 }
 
@@ -1023,9 +1015,9 @@ ul {
     width:260px;
     margin-top:40px;
     margin-left:20px;
-    -webkit-appearance: none; 
+    -webkit-appearance: none;
     appearance: none;
-    height: 8px; 
+    height: 8px;
     background: #606060;
     outline: none;
     cursor: pointer;
@@ -1034,9 +1026,9 @@ ul {
 #metronomeBPMSlider::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 23px; 
-    height: 23px; 
-    border-radius: 50%; 
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
     background: #F0F0F0;
     cursor: pointer;
     -webkit-box-shadow: 0px 5px 10px 3px rgba(0,0,0,0.4);
@@ -1053,8 +1045,8 @@ ul {
 #eventsList {
     width:calc(100%);
     height:374px;
-    list-style-type: none; 
-    margin: 0; 
+    list-style-type: none;
+    margin: 0;
     margin-top:10px;
     padding: 0;
     border-bottom: solid 1px #606060;
@@ -1068,8 +1060,7 @@ ul {
     width:calc(100% - 2px);
     height: 30px;
     border: solid 1px #606060;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='26' height='26' viewBox='0 0 24 24'><polyline stroke-width='2' cap='square' fill='%23F0F0F0' points='7,10 12,5 17,10'></polyline><polyline stroke-width='2' cap='square' fill='%23F0F0F0' points='7,14 12,19 17,14'></polyline></svg>"); 
-    
+
     background-color: #303030;
     background-position: 0% 50%;
     background-repeat: no-repeat;
@@ -1079,7 +1070,6 @@ ul {
 .delete {
     width:30px;
     height:30px;
-    background-image: url("data:image/svg+xml;utf8,<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='26' height='26' viewBox='0 0 24 24'><polyline stroke-width='2' cap='square' fill='none' stroke='%23F0F0F0' points='6,12 18,12'></polyline></svg>"); 
     background-color: #303030;
 }
 

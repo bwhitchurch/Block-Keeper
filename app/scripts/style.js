@@ -4,16 +4,16 @@
 // Created by Dallas McNeil
 
 const style = function() {
-    
+
     var less = require("less");
     var fs = require("fs");
     var path = require("path");
-    
+
     // Store style sheet
     var styleSheet = "";
-    
+
     // Load style sheet from file
-    fs.readFile(path.join(__dirname, "styles", "base.less"), "utf8", function(error, data) {
+    fs.readFile(path.join(__dirname, "less", "base.less"), "utf8", function(error, data) {
         if (error) {
             throw error;
         } else {
@@ -33,7 +33,7 @@ const style = function() {
             }
         })
     }
-    
+
     return {
         setStyle:setStyle
     }

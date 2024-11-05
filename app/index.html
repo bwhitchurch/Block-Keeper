@@ -9,8 +9,8 @@ Created by Dallas McNeil
 <html>
   <head>
     <title>Block Keeper</title>
-    <link type="text/css" rel="stylesheet" href="styles/layout.css" />
-    <link rel="stylesheet/less" type="text/css" href="styles/base.less" />
+    <link type="text/css" rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet/less" type="text/css" href="less/base.less" />
     <script>
       less = {
         async: true,
@@ -45,7 +45,7 @@ Created by Dallas McNeil
     <link
       type="text/css"
       rel="stylesheet"
-      href="styles/standardWindowBar.css"
+      href="css/standardWindowBar.css"
       id="titleBarStyle"
     />
     <div id="windowBar"></div>
@@ -211,22 +211,24 @@ Created by Dallas McNeil
         id="preferencesButton"
         onclick="prefs.openPreferences()"
       ></button>
-      <select
-        title="Tool select"
-        id="toolSelect"
-        onchange="tools.updateTools()"
-      >
-        <option value="crossSolver">Cross solver</option>
-        <option value="distribution">Distribution</option>
-        <option value="scramble">Drawn scramble</option>
-        <option value="EOLineSolver">EOLine solver</option>
-        <option value="eventStats">Event statistics</option>
-        <option value="eventTrend">Event trend</option>
-        <option value="firstBlockSolver">First block solver</option>
-        <option value="metronome">Metronome</option>
-        <option value="sessionTrend">Session trend</option>
-        <option value="splitTrend">Split trend</option>
-      </select>
+      <label id="toolSelectLabel">
+        <select
+          title="Tool select"
+          id="toolSelect"
+          onchange="tools.updateTools()"
+        >
+          <option value="crossSolver">Cross solver</option>
+          <option value="distribution">Distribution</option>
+          <option value="scramble">Drawn scramble</option>
+          <option value="EOLineSolver">EOLine solver</option>
+          <option value="eventStats">Event statistics</option>
+          <option value="eventTrend">Event trend</option>
+          <option value="firstBlockSolver">First block solver</option>
+          <option value="metronome">Metronome</option>
+          <option value="sessionTrend">Session trend</option>
+          <option value="splitTrend">Split trend</option>
+        </select>
+      </label>
 
       <div id="tools"></div>
       <button

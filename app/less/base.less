@@ -1,0 +1,337 @@
+@import "fontawesome.less";
+@import "brands.less";
+@import "solid.less";
+
+@background: #181818; @timer: #F0F0F0; @scramble: #B0B0B0; @base: #303030; @border: #606060; @text: #E0E0E0; @timerSize:25vmin; @timerSecondSize:8vmin;
+@darken: 40%;
+
+p, pre {
+    color:@text;
+}
+
+::-webkit-scrollbar-track {
+    background: @base;
+}
+
+::-webkit-scrollbar-thumb {
+    background: @border;
+}
+
+body {
+    background-color:@background;
+}
+
+#windowBar {
+    background-color: @background;
+}
+
+.indicator {
+    background-color:@background;
+}
+
+#background, #centreBackground {
+    background-color:@background;
+}
+
+#timer,#announcement, #timerSplit {
+    color:@timer;
+}
+
+#announcement {
+    margin-top:calc(50vmin - (@timerSecondSize + (@timerSize / 2)));
+    font-size:@timerSecondSize;
+}
+
+#timer {
+    font-size: @timerSize;
+}
+
+#timerSplit {
+    font-size: @timerSecondSize;
+}
+
+#scramble {
+    color:@scramble;
+    background-color:fade(@scramble,10%);
+}
+
+#scramble:hover {
+    background-color:fade(@scramble,20%);
+}
+
+#scramble.disabled:hover {
+    color:@scramble;
+    background-color:fade(@scramble,10%);
+    cursor: default;
+}
+
+#scramblePrevious {
+    .fa-icon;
+    .fas;
+
+    &::before {
+        content: @fa-var-backward;
+    }
+}
+
+#scrambleNext {
+    .fa-icon;
+    .fas;
+
+    &::before {
+        content: @fa-var-forward;
+    }
+}
+
+button, #tool, input, button.disabled, button.disabled:hover, button.disabled:active, input[type="text"],textarea,td,#dialogPreferences, #dialogPreview, #dialogShowInfo, #dialogCSTimer, #dialogAddTime,#dialogRecord,#dialogScramble,input[type="checkbox"],#tool,#sessionStats,#previewVideo,#sessionRecords, tr:first-child td, .tool, select.disabled:hover, #dialogManageEvents, #dialogBlindResult, #dialogTransferSession, #dialogUpdate {
+    color:@text;
+    background-color: @base;
+    border-color: @border;
+}
+
+.closeTool.disabled:hover {
+    color:@text;
+    background-color: @base;
+    border-color: @border;
+    opacity: 0.4;
+}
+
+#sessionRecordsContainer {
+    border-color: @border;
+    background-color: @base;
+}
+
+button:hover, select:hover,input[type="checkbox"]:hover {
+    border-color:darken(@border,@darken,relative);
+}
+
+button:active {
+    background-color: darken(@base,@darken,relative);
+    border-color: darken(@border,@darken,relative);
+    color:darken(@text,@darken,relative);
+}
+
+.cross {
+    .fa-icon;
+    .fas;
+
+    &::before {
+        content: @fa-var-close;
+    }
+}
+
+#sessionButton,#eventButton  {
+    background-color: @base;
+    .fa-icon;
+    .fas;
+
+    &::before {
+        content: @fa-var-list;
+    }
+}
+
+#preferencesButton {
+    background-color: @base;
+    .fa-icon;
+    .fas;
+
+    &::before {
+        content: @fa-var-gear;
+    }
+}
+
+#previewButton {
+    background-color: @base;
+    .fa-icon;
+    .fas;
+
+    &::before {
+        content: @fa-var-video;
+    }
+}
+
+.cross:active, #eventButton:active, #sessionButton:active, #previewButton:active, #preferencesButton:active {
+    background-color: darken(@base,@darken,relative);
+}
+
+
+select {
+    border-color:@border;
+    color:@text;
+}
+
+label {
+    position: relative;
+    color: @text;
+}
+
+label:after {
+    .fa-icon;
+    .fas;
+    content: @fa-var-caret-down;
+}
+
+#addToolButton {
+    border-color:@border;
+    background-color: @base;
+    .fa-icon;
+    .fas;
+    &::before {
+        content: @fa-var-plus;
+    }
+}
+
+select:hover {
+    border-color: darken(@border,@darken,relative);
+}
+
+#sessionSolvesTable, #sessionDetails ,#sessionRecords,#sessionRecordsHeader,#recordScramble,#recordComment {
+    border-color:@border;
+}
+
+#sessionRecords td:nth-child(2):hover {
+    background: darken(@base,@darken,relative);
+    color: darken(@text,@darken,relative);
+}
+
+#sessionRecords td:nth-child(2).disabled:hover, #sessionRecords td:nth-child(2).disabled p:hover {
+    background: @base;
+    color: @text;
+    cursor: default;
+}
+
+.selectable:hover, .selectable p:hover {
+    background: darken(@base,@darken,relative);
+}
+
+.selectable.disabled:hover, .selectable.disabled p:hover {
+    background: @base;
+    cursor: default;
+}
+
+#sessionRecords tr:first-child td {
+    background:@base;
+}
+
+#sessionRecords tr:first-child td:hover {
+    background:@base;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+    color:@text;
+}
+
+#recordScramble, #recordDate, #recordTime {
+    color:@text;
+}
+
+.splits-text {
+    text-align: center;
+}
+
+input[type="checkbox"]:checked {
+
+    position: relative;
+    vertical-align: middle;
+    .fa-icon;
+    .fas;
+    &::before {
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        content: @fa-var-check;
+    }
+}
+
+input[type="checkbox"]:active {
+    border-color:darken(@border,@darken,relative);
+    background-color: darken(@base,@darken,relative);
+}
+
+.ui-tabs-active button {
+    border-color: solid 2px @border;
+}
+
+:not(.ui-tabs-active).tab button {
+    border-bottom-color: solid 2px @base;
+}
+
+#tabs-1,#tabs-2,#tabs-3,#tabs-4 {
+    border-bottom: solid 2px @border;
+    border-top: solid 2px @border;
+}
+
+.tab button {
+    border-bottom: 0px;
+    transition: 0s;
+}
+
+:not(.ui-tabs-active).tab button {
+    border-color:@border;
+    padding-bottom:0px;
+}
+
+button, select, input,textarea, #tool, #sessionRecords,#sessionStats,#sessionDetails,#sessionRecordsContainer {
+     -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.4);
+}
+
+.tab a button, #addTimeButton,#sessionRecords {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
+}
+
+#previewButton.loading {
+    background-color: @base;
+
+    color: @text;
+    &::before {
+        .fa-icon;
+        .fas;
+        .fa-spin;
+        content: @fa-var-spinner;
+    }
+
+}
+
+#messageShowInfo {
+    border-top-color: @border;
+}
+
+#metronomeBPMSlider {
+    background-color: @border;
+}
+
+#metronomeBPMSlider::-webkit-slider-thumb {
+    background-color: @text;
+}
+
+#metronomeBPMLabel {
+    color: @text;
+}
+
+
+#eventsList {
+    border-bottom: solid 1px @border;
+    border-top: solid 1px @border;
+}
+
+.eventItem {
+    border: solid 1px @border;
+
+    &::before{
+        position: absolute;
+        top: 25%;
+        left: 1%;
+        .fa-icon;
+        .fas;
+        content: @fa-var-sort;
+    }
+}
+
+.delete {
+    background-color: @base;
+    .fa-icon;
+    .fas;
+    &::before{
+        content: @fa-var-minus;
+    }
+}

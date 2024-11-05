@@ -4,7 +4,7 @@
 // Created by Dallas McNeil
 
 var timer = function() {
-    
+
     var leftIndicator = document.getElementById("leftIndicator");
     var rightIndicator = document.getElementById("rightIndicator");
     var timerText = document.getElementById("timer");
@@ -16,7 +16,7 @@ var timer = function() {
     var readyColor = globals.readyColor;
     var normalColor = timerText.style.color;
     var indicatorColor = leftIndicator.style.backgroundColor;
-       
+
     // Keys to control the timer
     var mainKey = " ";
     var leftKey = preferences.leftKey;
@@ -30,13 +30,13 @@ var timer = function() {
     // Timer state information
     var timerState = "normal";
     var timerRunning = false;
-    
+
     // Time information
     var currentTime = Date.now();
     var startTime = currentTime;
     var inspectionTime = currentTime;
     var splitTimes = [];
-    
+
     // Current record information
     var timerTime = 0;
     var timerResult = "OK"; //OK, +2, DNF
@@ -53,15 +53,15 @@ var timer = function() {
     var inspectionEnabled = false;
     var splitEnabled = false;
     var OHSplitEnabled = false;
-    
+
     // Prevent key repeats
     var keysDown = {};
-    
+
     // Get keyboard down events
     window.onkeydown = function(e) {
         leftKey = preferences.leftKey;
         rightKey = preferences.rightKey;
-        
+
         // Ignore some keys
         if (e.keyCode == $.ui.keyCode.TAB || e.keyCode == 17 || e.keyCode == 18 || e.keyCode == 91 ||  e.keyCode == 93 || e.keyCode == 9) {
             return;
@@ -75,7 +75,7 @@ var timer = function() {
             e.preventDefault();
             return;
         }
-    
+
         if (!preferences.stackmat) {
             if (splitEnabled) {
                 if (e.key === leftKey) {
@@ -114,7 +114,7 @@ var timer = function() {
         } else {
             if (e.key === mainKey) {
                 mainDown = true;
-            } 
+            }
             if (e.key === "Escape") {
                 if (timerState === "inspecting" || timerState === "readyInspection") {
                     cancelTimer();
@@ -133,7 +133,7 @@ var timer = function() {
     }
 
     // Get keyboard up events
-    window.onkeyup = function(e) { 
+    window.onkeyup = function(e) {
         if (!preferences.stackmat) {
             if (splitEnabled) {
                 if (e.key === leftKey) {
@@ -158,7 +158,7 @@ var timer = function() {
         if (e.keyCode === 32) {
             e.preventDefault();
             return false;
-        } 
+        }
     }
 
     document.getElementById("background").onmousedown = function(e) {
@@ -201,13 +201,13 @@ var timer = function() {
             timerText.innerHTML = timeRemaining;
         }
     }
-    
+
     // Update the timer frequently
     function timerUpdate() {
         inspectionEnabled = (preferences.inspection && !events.getCurrentEvent().blind);
         splitEnabled = preferences.split || (events.getCurrentEvent().OH && preferences.OHSplit);
         OHSplitEnabled = preferences.OHSplit && events.getCurrentEvent().OH;
-        
+
         if (!preferences.stackmat) {
             document.getElementById("background").focus()
             currentTime = Date.now();
@@ -217,17 +217,17 @@ var timer = function() {
             leftIndicator.style.opacity = 0;
             rightIndicator.style.opacity = 0;
             switch (timerState) {
-                case "normal":       
+                case "normal":
                     if (!globals.menuOpen) {
                         if ((preferences.endSplit || OHSplitEnabled) && splitEnabled && cooldown) {
                             if (leftDown) {
                                 leftIndicator.style.backgroundColor = prepareColor;
                                 leftIndicator.style.opacity = 1;
-                            } 
+                            }
                             if (rightDown) {
                                 rightIndicator.style.backgroundColor = prepareColor;
                                 rightIndicator.style.opacity = 1;
-                            }        
+                            }
                         }
                         if (((splitEnabled && leftDown && rightDown) || (!splitEnabled && mainDown)) && !cooldown) {
                             if (inspectionEnabled) {
@@ -235,16 +235,16 @@ var timer = function() {
                             } else {
                                 prepareTimer();
                             }
-                        } 
+                        }
                         if (splitEnabled) {
                             if (leftDown) {
                                 leftIndicator.style.backgroundColor = prepareColor;
                                 leftIndicator.style.opacity = 1;
-                            } 
+                            }
                             if (rightDown) {
                                 rightIndicator.style.backgroundColor = prepareColor;
                                 rightIndicator.style.opacity = 1;
-                            }      
+                            }
                         }
                         if (splitEnabled && !leftDown && !rightDown) {
                             cooldown = false;
@@ -261,27 +261,27 @@ var timer = function() {
                         if (leftDown) {
                             leftIndicator.style.backgroundColor = readyColor;
                             leftIndicator.style.opacity = 1;
-                        } 
+                        }
                         if (rightDown) {
                             rightIndicator.style.backgroundColor = readyColor;
                             rightIndicator.style.opacity = 1;
-                        }        
+                        }
                     }
                     break;
                 case "inspecting":
                     if ((splitEnabled && leftDown && rightDown) || (!splitEnabled && mainDown)) {
-                        prepareTimer();        
+                        prepareTimer();
                     }
                     manageInspection();
                     if (splitEnabled) {
                         if (leftDown) {
                             leftIndicator.style.backgroundColor = inspectColor;
                             leftIndicator.style.opacity = 1;
-                        } 
+                        }
                         if (rightDown) {
                             rightIndicator.style.backgroundColor = inspectColor;
                             rightIndicator.style.opacity = 1;
-                        }        
+                        }
                     }
                     break;
                 case "preparing":
@@ -294,16 +294,16 @@ var timer = function() {
                         }
                     } else {
                         manageInspection();
-                    }       
+                    }
                     if (splitEnabled) {
                         if (leftDown) {
                             leftIndicator.style.backgroundColor = prepareColor;
                             leftIndicator.style.opacity = 1;
-                        } 
+                        }
                         if (rightDown) {
                             rightIndicator.style.backgroundColor = prepareColor;
                             rightIndicator.style.opacity = 1;
-                        }        
+                        }
                     }
                     break;
                 case "ready":
@@ -316,11 +316,11 @@ var timer = function() {
                         if (leftDown) {
                             leftIndicator.style.backgroundColor = readyColor;
                             leftIndicator.style.opacity = 1;
-                        } 
+                        }
                         if (rightDown) {
                             rightIndicator.style.backgroundColor = readyColor;
                             rightIndicator.style.opacity = 1;
-                        }        
+                        }
                     }
                     break;
                 case "timing":
@@ -328,21 +328,21 @@ var timer = function() {
                         if (leftDown) {
                             leftIndicator.style.backgroundColor = inspectColor;
                             leftIndicator.style.opacity = 1;
-                        } 
+                        }
                         if (rightDown) {
                             rightIndicator.style.backgroundColor = inspectColor;
                             rightIndicator.style.opacity = 1;
-                        }     
+                        }
                     } else if (preferences.endSplit && splitEnabled) {
                         if (leftDown) {
                             leftIndicator.style.backgroundColor = readyColor;
                             leftIndicator.style.opacity = 1;
-                        } 
+                        }
                         if (rightDown) {
                             rightIndicator.style.backgroundColor = readyColor;
                             rightIndicator.style.opacity = 1;
-                        }        
-                    } 
+                        }
+                    }
 
                     if (splitEnabled && OHSplitEnabled) {
                         if (!leftDown && !rightDown) {
@@ -356,13 +356,13 @@ var timer = function() {
                         timerText.innerHTML = "Solve";
                     } else {
                         timerText.innerHTML = formatTime(timerTime);
-                    } 
-                    
+                    }
+
                     break;
             }
         }
     }
-    
+
     // Fade out surround UI and show only timer
     function fadeOutUI() {
         timerRunning = true;
@@ -373,8 +373,9 @@ var timer = function() {
         $("#addToolButton").fadeOut();
         $("#toolSelect").fadeOut();
         $("#previewButton").fadeOut();
+        $("#toolSelectLabel").fadeOut();
     }
-    
+
     // Fade in UI again
     function fadeInUI() {
         timerRunning = false;
@@ -390,13 +391,13 @@ var timer = function() {
     // Inspection ready to start
     function readyInspection() {
         timerState = "inspectReady";
-        timerText.style.color = readyColor; 
+        timerText.style.color = readyColor;
     }
 
     // Start inspecting puzzle
     function startInspection() {
         timerState = "inspecting";
-        timerText.style.color = inspectColor; 
+        timerText.style.color = inspectColor;
         timerSplit.innerHTML = "";
         timerText.innerHTML = "15";
         inspectionTime = currentTime;
@@ -454,7 +455,7 @@ var timer = function() {
             of:"#background"
         },
         width:"220",
-        height:"102" 
+        height:"102"
     }).on('keydown',function(evt) {
         if (evt.keyCode === 13) {
             blindResult("OK");
@@ -462,11 +463,11 @@ var timer = function() {
         } else if (evt.keyCode === $.ui.keyCode.ESCAPE) {
             blindResult("DNF");
             evt.preventDefault();
-        }     
+        }
         evt.stopPropagation();
-        
+
     });
-    
+
     // Stop the timer
     function stopTimer(forced = false, SM = false) {
         currentTime = Date.now();
@@ -505,13 +506,13 @@ var timer = function() {
                 timerText.innerHTML = "";
                 timerSplit.innerHTML = "";
                 return;
-            } 
+            }
             submitTime();
             timerResult = "OK";
             fadeInUI();
         },0);
     }
-    
+
     // Set result at the end of a blind solve
     function blindResult(res) {
         $("#dialogBlindResult").dialog("close");
@@ -527,7 +528,7 @@ var timer = function() {
         globals.menuOpen = false;
         fadeInUI();
     }
-    
+
     // Cancel the timer at anytime
     function cancelTimer() {
         timerState = "normal";
@@ -566,7 +567,7 @@ var timer = function() {
 
             if (state.on) {
                 switch (timerState) {
-                    case "normal":      
+                    case "normal":
                         if (mainDown && inspectionEnabled) {
                             readyInspection();
                         }
@@ -582,7 +583,7 @@ var timer = function() {
                             rightIndicator.style.backgroundColor = prepareColor;
                         } else {
                             rightIndicator.style.backgroundColor = normalColor;
-                        }    
+                        }
 
                         if (leftDown && rightDown && (state.time_milli === 0)) {
                             timerText.style.color = prepareColor;
@@ -593,7 +594,7 @@ var timer = function() {
                         } else {
                             timerText.style.color = normalColor;
                         }
-                        
+
                         if (state.greenLight) {
                             timerText.style.color = readyColor;
                             leftIndicator.style.backgroundColor = readyColor;
@@ -689,11 +690,11 @@ var timer = function() {
                             if (leftDown) {
                                 leftIndicator.style.backgroundColor = readyColor;
                                 leftIndicator.style.opacity = 1;
-                            } 
+                            }
                             if (rightDown) {
                                 rightIndicator.style.backgroundColor = readyColor;
                                 rightIndicator.style.opacity = 1;
-                            }        
+                            }
                         }
 
                         if (splitEnabled && OHSplitEnabled) {
@@ -707,7 +708,7 @@ var timer = function() {
                             timerText.innerHTML = "Solve";
                         } else {
                             timerText.innerHTML = formatTime(state.time_milli/1000);
-                        } 
+                        }
 
                         timerTime = state.time_milli / 1000;
 
@@ -717,7 +718,7 @@ var timer = function() {
                             } else {
                                 stopTimer(true, true);
                             }
-                        }   
+                        }
                         break;
                 }
             } else {
@@ -746,7 +747,7 @@ var timer = function() {
             }
         }
     }
-    
+
     timerText.innerHTML = (0).toFixed(preferences.timerDetail)
 
     // Update timer every 17 milliseconds
@@ -755,19 +756,19 @@ var timer = function() {
     function returnTimerRunning() {
         return timerRunning;
     }
-    
+
     function returnTimerState() {
         return timerState;
     }
-    
+
     function setS3Voice(v) {
         s3voice = v;
     }
-    
+
     function setS7Voice(v) {
         s7voice = v;
     }
-    
+
     function clearTimer() {
         if (preferences.stackmat) {
             var s = "--";
@@ -783,7 +784,7 @@ var timer = function() {
         timerSplit.innerHTML = "";
         timerTime = 0;
     }
-    
+
     return {
         timerRunning:returnTimerRunning,
         timerState:returnTimerState,

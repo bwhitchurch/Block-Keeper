@@ -147,7 +147,7 @@ var events = function() {
             if (shared) {
                 // Require default scrambler
                 y[i].scrambler = x[j].scrambler;
-                
+
                 final.push(Object.assign({}, x[j], y[i]));
                 x.splice(j, 1);
             } else {
@@ -1096,6 +1096,7 @@ var events = function() {
             OH.style.left = "470px";
 
             var splits = document.createElement("input");
+            splits.className = "splits-text";
             splits.type = "text";
             splits.maxLength = 1;
             splits.style.width = "20px";
