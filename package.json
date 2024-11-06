@@ -22,7 +22,11 @@
     "electron-builder": "25.1.8",
     "electron-builder-lib": "20.23.1",
     "electron-builder-squirrel-windows": "^25.1.8",
-    "electron-simple-publisher": "^2.0.1"
+    "electron-simple-publisher": "^2.0.1",
+    "postcss": "^8.4.47",
+    "postcss-less": "^6.0.0",
+    "stylelint": "^16.10.0",
+    "stylelint-config-standard": "^36.0.1"
   },
   "dependencies": {
     "@electron/remote": "^2.1.2",
@@ -73,5 +77,21 @@
     "squirrelWindows": {
       "iconUrl": "https://raw.githubusercontent.com/DallasMcNeil/Block-Keeper/master/build/icon.ico"
     }
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard",
+    "files": [
+      "app/css/*",
+      "app/less/*"
+    ],
+    "fix": true,
+    "overrides": [
+      {
+        "files": [
+          "app/less/*.less"
+        ],
+        "customSyntax": "postcss-less"
+      }
+    ]
   }
 }
