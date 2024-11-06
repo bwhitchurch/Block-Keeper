@@ -1,0 +1,11 @@
+{
+  "extends": "stylelint-config-standard",
+  "files": ["**/*.css"],
+  "fix": true,
+  "overrides": [
+    {
+      "files": ["**/*.less"],
+      "customSyntax": "postcss-less"
+    }
+  ]
+}
