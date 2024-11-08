@@ -1,6 +1,7 @@
-@import "fontawesome.less";
-@import "brands.less";
-@import "solid.less";
+@import url("../vendor/fontawesome/less/fontawesome.less");
+@import url("../vendor/fontawesome/less/solid.less");
+
+@fa-font-path: "../vendor/fontawesome/fonts";
 
 @background: #181818; @timer: #F0F0F0; @scramble: #B0B0B0; @base: #303030; @border: #606060; @text: #E0E0E0; @timerSize:25vmin; @timerSecondSize:8vmin;
 @darken: 40%;
@@ -66,12 +67,7 @@ body {
 }
 
 #scramblePrevious {
-    .fa-icon;
-    .fas;
-
-    &::before {
-        content: @fa-var-backward;
-    }
+    .fa-icon-solid(@fa-var-backward);
 }
 
 #scrambleNext {
