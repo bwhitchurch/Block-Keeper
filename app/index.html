@@ -48,22 +48,22 @@ Created by Dallas McNeil
             href="css/standardWindowBar.css"
             id="titleBarStyle"
         />
-        <div id="windowBar"></div>
+        <div id="window-bar"></div>
         <div id="content">
             <div id="background" onclick="events.resetUI()">
                 <canvas id="confetti"></canvas>
-                <div id="centreBackground">
+                <div id="centre-background">
                     <p id="announcement">New best time!</p>
                     <p id="timer">0.000</p>
-                    <p id="timerSplit"></p>
+                    <p id="timer-split"></p>
                 </div>
-                <div class="indicator" id="leftIndicator"></div>
-                <div class="indicator" id="rightIndicator"></div>
+                <div class="indicator" id="left-indicator"></div>
+                <div class="indicator" id="right-indicator"></div>
             </div>
 
-            <div id="scrambleContainer">
+            <div id="scramble-container">
                 <button
-                    id="scramblePrevious"
+                    id="scramble-previous"
                     onclick="scramble.previousScramble()"
                     title="Go back to previous scramble"
                 ></button>
@@ -73,7 +73,7 @@ Created by Dallas McNeil
                     title="Current scramble, click to select scrambler or use custom scrambles"
                 ></p>
                 <button
-                    id="scrambleNext"
+                    id="scramble-next"
                     onclick="scramble.nextScramble()"
                     title="Go to next scramble"
                 ></button>
@@ -82,57 +82,57 @@ Created by Dallas McNeil
             <div id="stats">
                 <select
                     title="Event select"
-                    id="eventSelect"
+                    id="event-select"
                     onchange="events.setEvent()"
                 ></select>
                 <button
                     title="Edit events"
-                    id="eventButton"
+                    id="event-button"
                     onclick="events.openEvents()"
                 ></button>
-                <div id="sessionContainer">
+                <div id="session-container">
                     <select
                         title="Session select"
-                        id="sessionSelect"
+                        id="session-select"
                         onchange="events.setSession()"
                     ></select>
                     <button
                         title="Edit session"
-                        id="sessionButton"
+                        id="session-button"
                         onclick="events.toggleSessionButtons()"
                     ></button>
                 </div>
-                <div id="sessionButtons">
+                <div id="session-buttons">
                     <button
                         title="Create a new session"
-                        id="newSessionButton"
+                        id="new-session-button"
                         onclick="events.createSessionButton()"
                     >
                         New
                     </button>
                     <button
                         title="Move a session to a different event"
-                        id="transferSessionButton"
+                        id="transfer-session-button"
                         onclick="events.transferSessionButton()"
                     >
                         Transfer
                     </button>
                     <button
                         title="Remove all records from the session"
-                        id="clearSessionButton"
+                        id="clear-session-button"
                         onclick="events.clearSessionButton()"
                     >
                         Clear
                     </button>
                     <button
                         title="Delete this session"
-                        id="deleteSessionButton"
+                        id="delete-session-button"
                         onclick="events.deleteSessionButton()"
                     >
                         Delete
                     </button>
                 </div>
-                <table id="sessionDetails">
+                <table id="session-details">
                     <tr>
                         <td>
                             <p id="sessionSolves">
@@ -154,7 +154,7 @@ Created by Dallas McNeil
                         </td>
                     </tr>
                 </table>
-                <table id="sessionStats">
+                <table id="session-stats">
                     <tr>
                         <td></td>
                         <td>
@@ -176,14 +176,14 @@ Created by Dallas McNeil
                         </td>
                     </tr>
                 </table>
-                <div id="sessionRecordsContainer">
-                    <table id="sessionRecordsHeader">
+                <div id="session-records-container">
+                    <table id="session-records-header">
                         <thead>
                             <tr>
                                 <td>
                                     <button
                                         title="Add time"
-                                        id="addTimeButton"
+                                        id="add-time-button"
                                         onclick="events.openTimeDialog()"
                                     >
                                         +
@@ -201,24 +201,24 @@ Created by Dallas McNeil
                             </tr>
                         </thead>
                     </table>
-                    <table id="sessionRecords"></table>
+                    <table id="session-records"></table>
                 </div>
             </div>
 
             <button
                 title="Video preview"
-                id="previewButton"
+                id="preview-button"
                 onclick="record.openPreview()"
             ></button>
             <button
                 title="Preferences"
-                id="preferencesButton"
+                id="preferences-button"
                 onclick="prefs.openPreferences()"
             ></button>
-            <label id="toolSelectLabel">
+            <label id="tool-select-label">
                 <select
                     title="Tool select"
-                    id="toolSelect"
+                    id="tool-select"
                     onchange="tools.updateTools()"
                 >
                     <option value="crossSolver">Cross solver</option>
@@ -237,14 +237,14 @@ Created by Dallas McNeil
             <div id="tools"></div>
             <button
                 title="Add tool"
-                id="addToolButton"
+                id="add-tool-button"
                 onclick="tools.addTool()"
             ></button>
         </div>
 
-        <div id="startupCover">
+        <div id="startup-cover">
             <img
-                id="startupImage"
+                id="startup-image"
                 src="images/icon.png"
                 alt="Block Keeper app icon: a 3D cube with red, blue, and yellow faces."
             />
@@ -252,7 +252,7 @@ Created by Dallas McNeil
 
         <!-- Dialogs -->
 
-        <div id="dialogManageEvents">
+        <div id="dialog-manage-events">
             <table>
                 <thead>
                     <tr>
@@ -266,7 +266,7 @@ Created by Dallas McNeil
                     </tr>
                 </thead>
 
-                <tbody id="eventsList"></tbody>
+                <tbody id="events-list"></tbody>
             </table>
             <p>
                 <button onclick="events.createNewEvent()">Add event</button>
@@ -274,10 +274,10 @@ Created by Dallas McNeil
             </p>
         </div>
 
-        <div id="dialogAddTime">
+        <div id="dialog-add-time">
             <p>Add time</p>
             <p>
-                <label><input type="text" id="addTimeInput" placeholder="x:xx.xxx" /></label>
+                <label><input type="text" id="add-time-input" placeholder="x:xx.xxx" /></label>
                 <span id="addTimeMessage"></span>
             </p>
             <p>
@@ -292,7 +292,7 @@ Created by Dallas McNeil
             <textarea
                 placeholder="Scramble"
                 rows="3"
-                id="addScrambleInput"
+                id="add-scramble-input"
             ></textarea>
             <p>
                 <button onclick="events.addRecord()">Add</button>
@@ -300,7 +300,7 @@ Created by Dallas McNeil
             </p>
         </div>
 
-        <div id="dialogRecord">
+        <div id="dialog-record">
             <button title="Set result to OK" onclick="events.recordResultOK()">
                 OK
             </button>
@@ -319,30 +319,30 @@ Created by Dallas McNeil
             <button title="Delete this time" onclick="events.deleteRecord()">
                 Delete
             </button>
-            <p id="recordDate"></p>
-            <p id="recordTime"></p>
-            <p id="recordScramble"></p>
-            <textarea placeholder="Comment" id="recordComment"></textarea>
+            <p id="record-date"></p>
+            <p id="record-time"></p>
+            <p id="record-scramble"></p>
+            <textarea placeholder="Comment" id="record-comment"></textarea>
         </div>
 
-        <div id="dialogPreview">
+        <div id="dialog-preview">
             <button
-                id="closePreview"
+                id="close-preview"
                 class="cross"
                 onclick="record.closePreview()"
             ></button>
             <br />
-            <video id="previewVideo" controls></video>
+            <video id="preview-video" controls></video>
             <button
                 title="Save video as file"
-                id="savePreview"
+                id="save-preview"
                 onclick="record.saveVideo()"
             >
                 Save video
             </button>
         </div>
 
-        <div id="dialogScramble">
+        <div id="dialog-scramble">
             <p>
                 Scrambler:
                 <select id="scramblerSelect"></select>
@@ -351,23 +351,23 @@ Created by Dallas McNeil
                 Custom scrambles (newline separated)<br /><textarea
                     placeholder="Scramble"
                     rows="3"
-                    id="customScramble"
+                    id="custom-scramble"
                 ></textarea>
             </p>
             <p><button onclick="scramble.closeScramble()">Done</button></p>
         </div>
 
-        <div id="dialogShowInfo">
+        <div id="dialog-show-info">
             <button
-                id="closeShowInfo"
+                id="close-show-info"
                 class="cross"
                 onclick="events.closeShowInfo()"
             ></button>
             <br />
-            <p id="messageShowInfo"></p>
+            <p id="message-show-info"></p>
         </div>
 
-        <div id="dialogBlindResult">
+        <div id="dialog-blind-result">
             <p>What was the result?</p>
             <p>
                 <button onclick="timer.blindResult('OK')">OK</button>
@@ -376,7 +376,7 @@ Created by Dallas McNeil
             </p>
         </div>
 
-        <div id="dialogCSTimer">
+        <div id="dialog-cs-timer">
             <p id="messageCSTimer"></p>
             <br />
             <select id="eventSelectCSTimer"></select>
@@ -396,7 +396,7 @@ Created by Dallas McNeil
             </button>
         </div>
 
-        <div id="dialogTransferSession">
+        <div id="dialog-transfer-session">
             <p>Select the event to move the session to.</p>
             <br />
             <select id="eventSelectTransfer"></select>
@@ -408,9 +408,9 @@ Created by Dallas McNeil
             </button>
         </div>
 
-        <div id="dialogPreferences">
+        <div id="dialog-preferences">
             <button
-                id="closePreferences"
+                id="close-preferences"
                 class="cross"
                 onclick="prefs.closePreferences()"
             ></button>
@@ -834,17 +834,17 @@ Created by Dallas McNeil
             </p>
             <button
                 title="Save preferences and close"
-                id="savePreferences"
+                id="save-preferences"
                 onclick="prefs.savePreferences()"
             >
                 Save
             </button>
         </div>
 
-        <div id="dialogUpdate">
+        <div id="dialog-update">
             <button
                 class="cross"
-                id="closeUpdate"
+                id="close-update"
                 onclick="update.closeUpdate()"
             ></button>
             <h2 id="updateHeading"></h2>

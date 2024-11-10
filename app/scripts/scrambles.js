@@ -76,7 +76,7 @@ var scramble = function() {
     var scrambleImage = document.getElementById("scrambleImage");
     var scrambleSelect = document.getElementById("scramblerSelect");
 
-    $("#dialogScramble").dialog({
+    $("#dialog-scramble").dialog({
         autoOpen:false,
         modal:true,
         show:"fade",
@@ -97,19 +97,19 @@ var scramble = function() {
 
     // Open the scramble menu when the scramble is clicked
     function openScramble() {
-        if ($("#dialogScramble").dialog("isOpen")) {
+        if ($("#dialog-scramble").dialog("isOpen")) {
             closeScramble();
         } else if (!globals.menuOpen) {
-            $("#dialogScramble").dialog("open");
+            $("#dialog-scramble").dialog("open");
             disableAllElements("scramble");
-            document.getElementById("customScramble").value = "";
+            document.getElementById("custom-scramble").value = "";
             globals.menuOpen = true;
         }
     }
 
     // Close the scramble menu
     function closeScramble() {
-        $("#dialogScramble").dialog("close");
+        $("#dialog-scramble").dialog("close");
         enableAllElements();
         scrambleList = [];
         appendCustomScrambles();
@@ -143,7 +143,7 @@ var scramble = function() {
         scrambleList = [];
         currentScramble = -1;
         scrambleSelect.value = "Recommended";
-        enableElement("#scrambleNext");
+        enableElement("#scramble-next");
         generating = false;
         nextScramble();
     }
@@ -151,7 +151,7 @@ var scramble = function() {
     function resetList() {
         scrambleList = [];
         currentScramble = -1;
-        enableElement("#scrambleNext");
+        enableElement("#scramble-next");
         generating = false;
         nextScramble();
     }
@@ -169,8 +169,8 @@ var scramble = function() {
             scrambleText.innerHTML = "Generating...";
             
             if (preloading) {
-                disableElement("#scramblePrevious");
-                disableElement("#scrambleNext");
+                disableElement("#scramble-previous");
+                disableElement("#scramble-next");
                 generating = true;
                 return;
             }
@@ -186,8 +186,8 @@ var scramble = function() {
                 if ((scrambler == "444" || scrambler == "sq1") && preferences.fastScramblers) {
                     scrambler += "fast";
                 }
-                disableElement("#scramblePrevious");
-                disableElement("#scrambleNext");
+                disableElement("#scramble-previous");
+                disableElement("#scramble-next");
                 
                 requestScrambleForType(scrambler);
             }
@@ -245,7 +245,7 @@ var scramble = function() {
             return;
         }
         
-        enableElement("#scrambleNext");
+        enableElement("#scramble-next");
 
         scrambleList.push(scrambleObj);
 
@@ -278,7 +278,7 @@ var scramble = function() {
 
     // Add custom scrambles to list
     function appendCustomScrambles() {
-        var customScramble = document.getElementById("customScramble").value;
+        var customScramble = document.getElementById("custom-scramble").value;
         var scrambles = customScramble.split(/\r?\n/);
         for (var i=0; i<scrambles.length; i++) {
             if (scrambles[i] != "") {
@@ -307,9 +307,9 @@ var scramble = function() {
                 }
 
                 if (currentScramble == 0) {
-                    disableElement("#scramblePrevious");
+                    disableElement("#scramble-previous");
                 } else {
-                    enableElement("#scramblePrevious");
+                    enableElement("#scramble-previous");
                 }
             }
         }

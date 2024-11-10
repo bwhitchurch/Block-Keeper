@@ -3,11 +3,19 @@
 
 @fa-font-path: "../vendor/fontawesome/fonts";
 
-@background: #181818; @timer: #F0F0F0; @scramble: #B0B0B0; @base: #303030; @border: #606060; @text: #E0E0E0; @timerSize:25vmin; @timerSecondSize:8vmin;
+@background: #181818;
+@timer: #f0f0f0;
+@scramble: #b0b0b0;
+@base: #303030;
+@border: #606060;
+@text: #e0e0e0;
+@timerSize: 25vmin;
+@timerSecondSize: 8vmin;
 @darken: 40%;
 
-p, pre {
-    color:@text;
+p,
+pre {
+    color: @text;
 }
 
 ::-webkit-scrollbar-track {
@@ -19,58 +27,61 @@ p, pre {
 }
 
 body {
-    background-color:@background;
+    background-color: @background;
 }
 
-#windowBar {
+#window-bar {
     background-color: @background;
 }
 
 .indicator {
-    background-color:@background;
+    background-color: @background;
 }
 
-#background, #centreBackground {
-    background-color:@background;
+#background,
+#centre-background {
+    background-color: @background;
 }
 
-#timer,#announcement, #timerSplit {
-    color:@timer;
+#timer,
+#announcement,
+#timer-split {
+    color: @timer;
 }
 
 #announcement {
-    margin-top:calc(50vmin - (@timerSecondSize + (@timerSize / 2)));
-    font-size:@timerSecondSize;
+    margin-top: calc(50vmin - (@timerSecondSize + (@timerSize / 2)));
+    font-size: @timerSecondSize;
 }
 
 #timer {
     font-size: @timerSize;
 }
 
-#timerSplit {
+#timer-split {
     font-size: @timerSecondSize;
 }
 
 #scramble {
-    color:@scramble;
-    background-color:fade(@scramble,10%);
+    color: @scramble;
+    background-color: fade(@scramble, 10%);
 }
 
 #scramble:hover {
-    background-color:fade(@scramble,20%);
+    background-color: fade(@scramble, 20%);
 }
 
 #scramble.disabled:hover {
-    color:@scramble;
-    background-color:fade(@scramble,10%);
+    color: @scramble;
+    background-color: fade(@scramble, 10%);
     cursor: default;
 }
 
-#scramblePrevious {
+#scramble-previous {
     .fa-icon-solid(@fa-var-backward);
 }
 
-#scrambleNext {
+#scramble-next {
     .fa-icon;
     .fas;
 
@@ -79,32 +90,77 @@ body {
     }
 }
 
-button, #tool, input, button.disabled, button.disabled:hover, button.disabled:active, input[type="text"],textarea,td,#dialogPreferences, #dialogPreview, #dialogShowInfo, #dialogCSTimer, #dialogAddTime,#dialogRecord,#dialogScramble,input[type="checkbox"],#tool,#sessionStats,#previewVideo,#sessionRecords, tr:first-child td, .tool, select.disabled:hover, #dialogManageEvents, #dialogBlindResult, #dialogTransferSession, #dialogUpdate {
-    color:@text;
+button,
+#tool,
+input,
+button.disabled,
+button.disabled:hover,
+button.disabled:active,
+input[type="text"],
+textarea,
+td,
+#dialog-preferences,
+#dialog-preview,
+#dialog-show-info,
+#dialog-cs-timer,
+#dialog-add-time,
+#dialog-record,
+#dialog-scramble,
+input[type="checkbox"],
+#session-stats,
+#preview-video,
+#session-records,
+tr:first-child td,
+.tool,
+select.disabled:hover,
+#dialog-manage-events,
+#dialog-blind-result,
+#dialog-transfer-session,
+#dialog-update {
+    color: @text;
     background-color: @base;
     border-color: @border;
 }
 
-.closeTool.disabled:hover {
-    color:@text;
+.close-tool.disabled:hover {
+    color: @text;
     background-color: @base;
     border-color: @border;
     opacity: 0.4;
 }
 
-#sessionRecordsContainer {
+#session-records-container {
     border-color: @border;
     background-color: @base;
 }
 
-button:hover, select:hover,input[type="checkbox"]:hover {
-    border-color:darken(@border,@darken,relative);
+select {
+    border-color: @border;
+    color: @text;
+}
+
+button,
+select,
+input,
+textarea,
+#tool,
+#session-records,
+#session-stats,
+#session-details,
+#session-records-container {
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.4);
+}
+
+button:hover,
+select:hover,
+input[type="checkbox"]:hover {
+    border-color: darken(@border, @darken, relative);
 }
 
 button:active {
-    background-color: darken(@base,@darken,relative);
-    border-color: darken(@border,@darken,relative);
-    color:darken(@text,@darken,relative);
+    background-color: darken(@base, @darken, relative);
+    border-color: darken(@border, @darken, relative);
+    color: darken(@text, @darken, relative);
 }
 
 .cross {
@@ -116,7 +172,8 @@ button:active {
     }
 }
 
-#sessionButton,#eventButton  {
+#session-button,
+#event-button {
     background-color: @base;
     .fa-icon;
     .fas;
@@ -126,7 +183,7 @@ button:active {
     }
 }
 
-#preferencesButton {
+#preferences-button {
     background-color: @base;
     .fa-icon;
     .fas;
@@ -136,7 +193,7 @@ button:active {
     }
 }
 
-#previewButton {
+#preview-button {
     background-color: @base;
     .fa-icon;
     .fas;
@@ -146,14 +203,12 @@ button:active {
     }
 }
 
-.cross:active, #eventButton:active, #sessionButton:active, #previewButton:active, #preferencesButton:active {
-    background-color: darken(@base,@darken,relative);
-}
-
-
-select {
-    border-color:@border;
-    color:@text;
+.cross:active,
+#event-button:active,
+#session-button:active,
+#preview-button:active,
+#preferences-button:active {
+    background-color: darken(@base, @darken, relative);
 }
 
 label {
@@ -167,8 +222,8 @@ label:after {
     content: @fa-var-caret-down;
 }
 
-#addToolButton {
-    border-color:@border;
+#add-tool-button {
+    border-color: @border;
     background-color: @base;
     .fa-icon;
     .fas;
@@ -178,47 +233,57 @@ label:after {
 }
 
 select:hover {
-    border-color: darken(@border,@darken,relative);
+    border-color: darken(@border, @darken, relative);
 }
 
-#sessionSolvesTable, #sessionDetails ,#sessionRecords,#sessionRecordsHeader,#recordScramble,#recordComment {
-    border-color:@border;
+#session-solves-table,
+#session-details,
+#session-records,
+#session-records-header,
+#record-scramble,
+#record-comment {
+    border-color: @border;
 }
 
-#sessionRecords td:nth-child(2):hover {
-    background: darken(@base,@darken,relative);
-    color: darken(@text,@darken,relative);
+.selectable:hover,
+.selectable p:hover {
+    background: darken(@base, @darken, relative);
 }
 
-#sessionRecords td:nth-child(2).disabled:hover, #sessionRecords td:nth-child(2).disabled p:hover {
+.selectable.disabled:hover,
+.selectable.disabled p:hover {
+    background: @base;
+    cursor: default;
+}
+
+#session-records tr:first-child td {
+    background: @base;
+}
+
+#session-records td:nth-child(2):hover {
+    background: darken(@base, @darken, relative);
+    color: darken(@text, @darken, relative);
+}
+
+#session-records td:nth-child(2).disabled:hover,
+#session-records td:nth-child(2).disabled p:hover {
     background: @base;
     color: @text;
     cursor: default;
 }
 
-.selectable:hover, .selectable p:hover {
-    background: darken(@base,@darken,relative);
-}
-
-.selectable.disabled:hover, .selectable.disabled p:hover {
+#session-records tr:first-child td:hover {
     background: @base;
-    cursor: default;
-}
-
-#sessionRecords tr:first-child td {
-    background:@base;
-}
-
-#sessionRecords tr:first-child td:hover {
-    background:@base;
 }
 
 .ui-dialog .ui-dialog-titlebar {
-    color:@text;
+    color: @text;
 }
 
-#recordScramble, #recordDate, #recordTime {
-    color:@text;
+#record-scramble,
+#record-date,
+#record-time {
+    color: @text;
 }
 
 .splits-text {
@@ -226,7 +291,6 @@ select:hover {
 }
 
 input[type="checkbox"]:checked {
-
     position: relative;
     vertical-align: middle;
     .fa-icon;
@@ -240,21 +304,12 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:active {
-    border-color:darken(@border,@darken,relative);
-    background-color: darken(@base,@darken,relative);
+    border-color: darken(@border, @darken, relative);
+    background-color: darken(@base, @darken, relative);
 }
 
 .ui-tabs-active button {
     border-color: solid 2px @border;
-}
-
-:not(.ui-tabs-active).tab button {
-    border-bottom-color: solid 2px @base;
-}
-
-#tabs-1,#tabs-2,#tabs-3,#tabs-4 {
-    border-bottom: solid 2px @border;
-    border-top: solid 2px @border;
 }
 
 .tab button {
@@ -262,20 +317,27 @@ input[type="checkbox"]:active {
     transition: 0s;
 }
 
+.tab a button,
+#add-time-button,
+#session-records {
+    -webkit-box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+}
+
 :not(.ui-tabs-active).tab button {
-    border-color:@border;
-    padding-bottom:0px;
+    border-color: @border;
+    padding-bottom: 0px;
+    border-bottom-color: solid 2px @base;
 }
 
-button, select, input,textarea, #tool, #sessionRecords,#sessionStats,#sessionDetails,#sessionRecordsContainer {
-     -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.4);
+#tabs-1,
+#tabs-2,
+#tabs-3,
+#tabs-4 {
+    border-bottom: solid 2px @border;
+    border-top: solid 2px @border;
 }
 
-.tab a button, #addTimeButton,#sessionRecords {
-    -webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0);
-}
-
-#previewButton.loading {
+#preview-button.loading {
     background-color: @base;
 
     color: @text;
@@ -285,35 +347,33 @@ button, select, input,textarea, #tool, #sessionRecords,#sessionStats,#sessionDet
         .fa-spin;
         content: @fa-var-spinner;
     }
-
 }
 
-#messageShowInfo {
+#message-show-info {
     border-top-color: @border;
 }
 
-#metronomeBPMSlider {
+#metronome-bpm-slider {
     background-color: @border;
 }
 
-#metronomeBPMSlider::-webkit-slider-thumb {
+#metronome-bpm-slider::-webkit-slider-thumb {
     background-color: @text;
 }
 
-#metronomeBPMLabel {
+#metronome-bpm-label {
     color: @text;
 }
 
-
-#eventsList {
+#events-list {
     border-bottom: solid 1px @border;
     border-top: solid 1px @border;
 }
 
-.eventItem {
+.event-item {
     border: solid 1px @border;
 
-    &::before{
+    &::before {
         position: absolute;
         top: 25%;
         left: 1%;
@@ -327,7 +387,7 @@ button, select, input,textarea, #tool, #sessionRecords,#sessionStats,#sessionDet
     background-color: @base;
     .fa-icon;
     .fas;
-    &::before{
+    &::before {
         content: @fa-var-minus;
     }
 }

@@ -37,14 +37,14 @@ function enableElement(elem) {
 
 // Disable all major elements, with exception
 function disableAllElements(exception = "") {
-    var elements = $("#content").children().not("#stats").not("#scrambleContainer");
-    elements = elements.add($("#scrambleContainer").children());
-    elements = elements.add($("#stats").children().not("#sessionContainer"));
-    elements = elements.add($("#sessionContainer").children());
-    $("#addTimeButton").prop("disabled", true);
-    $("#addTimeButton").addClass("disabled");
-    $(".closeTool").prop("disabled", true);
-    $(".closeTool").addClass("disabled");
+    var elements = $("#content").children().not("#stats").not("#scramble-container");
+    elements = elements.add($("#scramble-container").children());
+    elements = elements.add($("#stats").children().not("#session-container"));
+    elements = elements.add($("#session-container").children());
+    $("#add-time-button").prop("disabled", true);
+    $("#add-time-button").addClass("disabled");
+    $(".close-tool").prop("disabled", true);
+    $(".close-tool").addClass("disabled");
     $(".selectable").prop("disabled", true);
     $(".selectable").addClass("disabled");
     for (var e in elements) {
@@ -77,18 +77,18 @@ function clearSelection() {
 // Enable all major elements
 function enableAllElements() {
     clearSelection();
-    var elements = $("#content").children().not("#stats").not("#scrambleContainer");
-    elements = elements.add($("#scrambleContainer").children());
-    elements = elements.add($("#stats").children().not("#sessionContainer"));
-    elements = elements.add($("#sessionContainer").children());
-    $("#addTimeButton").prop("disabled", false);
-    $("#addTimeButton").removeClass("disabled");
-    $(".closeTool").prop("disabled", false);
-    $(".closeTool").removeClass("disabled");
+    var elements = $("#content").children().not("#stats").not("#scramble-container");
+    elements = elements.add($("#scramble-container").children());
+    elements = elements.add($("#stats").children().not("#session-container"));
+    elements = elements.add($("#session-container").children());
+    $("#add-time-button").prop("disabled", false);
+    $("#add-time-button").removeClass("disabled");
+    $(".close-tool").prop("disabled", false);
+    $(".close-tool").removeClass("disabled");
     $(".selectable").prop("disabled", false);
     $(".selectable").removeClass("disabled");
     for (var e in elements) {
-        if (elements[e].id === "previewButton") {
+        if (elements[e].id === "preview-button") {
             if (record.hasVideo() && preferences.recordSolve && !record.recording()) {
                 enableElement("#"+elements[e].id);
             }

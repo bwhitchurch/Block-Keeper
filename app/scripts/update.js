@@ -5,7 +5,7 @@
 
 var update = function(){
 
-    $("#dialogUpdate").dialog({
+    $("#dialog-update").dialog({
         autoOpen:false,
         modal:true,
         show:"fade",
@@ -37,7 +37,7 @@ var update = function(){
                     console.log("Couldn't present update, try again in 10 seconds");
                     setTimeout(show, 10000);
                 } else {
-                    $("#dialogUpdate").dialog("open");
+                    $("#dialog-update").dialog("open");
                     $("#updateHeading").text(data.name);
                     $("#updateInfo").html("A new update is being downloaded and will be installed automatically.<br><br>Release notes");
                     $("#updateNotes").text(data.body);
@@ -54,7 +54,7 @@ var update = function(){
     }
 
     function closeUpdate() {
-        $("#dialogUpdate").dialog("close");
+        $("#dialog-update").dialog("close");
         enableAllElements();
         globals.menuOpen = false;
     }

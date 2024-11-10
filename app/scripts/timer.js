@@ -5,10 +5,10 @@
 
 var timer = function() {
 
-    var leftIndicator = document.getElementById("leftIndicator");
-    var rightIndicator = document.getElementById("rightIndicator");
+    var leftIndicator = document.getElementById("left-indicator");
+    var rightIndicator = document.getElementById("right-indicator");
     var timerText = document.getElementById("timer");
-    var timerSplit = document.getElementById("timerSplit");
+    var timerSplit = document.getElementById("timer-split");
 
     // Various timer and indicator colors
     var prepareColor = globals.prepareColor;
@@ -67,7 +67,7 @@ var timer = function() {
             return;
         }
 
-        if (e.keyCode === $.ui.keyCode.ESCAPE && $("#dialogRecord").dialog("isOpen")) {
+        if (e.keyCode === $.ui.keyCode.ESCAPE && $("#dialog-record").dialog("isOpen")) {
             events.closeDialogRecord(false);
         }
 
@@ -367,25 +367,26 @@ var timer = function() {
     function fadeOutUI() {
         timerRunning = true;
         $("#stats").fadeOut();
-        $("#scrambleContainer").fadeOut();
-        $("#preferencesButton").fadeOut();
+        $("#scramble-container").fadeOut();
+        $("#preferences-button").fadeOut();
         $("#tools").fadeOut();
-        $("#addToolButton").fadeOut();
-        $("#toolSelect").fadeOut();
-        $("#previewButton").fadeOut();
-        $("#toolSelectLabel").fadeOut();
+        $("#add-tool-button").fadeOut();
+        $("#tool-select").fadeOut();
+        $("#preview-button").fadeOut();
+        $("#tool-select-label").fadeOut();
     }
 
     // Fade in UI again
     function fadeInUI() {
         timerRunning = false;
         $("#stats").fadeIn();
-        $("#scrambleContainer").fadeIn();
-        $("#preferencesButton").fadeIn();
+        $("#scramble-container").fadeIn();
+        $("#preferences-button").fadeIn();
         $("#tools").fadeIn();
-        $("#addToolButton").fadeIn();
-        $("#toolSelect").fadeIn();
-        $("#previewButton").fadeIn();
+        $("#add-tool-button").fadeIn();
+        $("#tool-select").fadeIn();
+        $("#preview-button").fadeIn();
+        $("#tool-select-label").fadeIn();
     }
 
     // Inspection ready to start
@@ -444,7 +445,7 @@ var timer = function() {
         timerSplit.innerHTML = "";
     }
 
-    $("#dialogBlindResult").dialog({
+    $("#dialog-blind-result").dialog({
         autoOpen:false,
         modal:true,
         hide:"fade",
@@ -501,7 +502,7 @@ var timer = function() {
             }
             inspectionTime = currentTime;
             if (events.getCurrentEvent().blind) {
-                $("#dialogBlindResult").dialog("open")
+                $("#dialog-blind-result").dialog("open")
                 globals.menuOpen = true;
                 timerText.innerHTML = "";
                 timerSplit.innerHTML = "";
@@ -515,7 +516,7 @@ var timer = function() {
 
     // Set result at the end of a blind solve
     function blindResult(res) {
-        $("#dialogBlindResult").dialog("close");
+        $("#dialog-blind-result").dialog("close");
         timerResult = res;
         timerText.innerHTML = formatTime(timerTime);
         if (splitTimes.length > 0) {
@@ -603,7 +604,7 @@ var timer = function() {
                             rightIndicator.style.opacity = 1;
                         }
 
-                        if (!($("#dialogBlindResult").dialog("isOpen"))) {
+                        if (!($("#dialog-blind-result").dialog("isOpen"))) {
                             timerText.innerHTML = formatTime(state.time_milli / 1000);
                         }
 

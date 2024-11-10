@@ -73,7 +73,7 @@ var prefs = function() {
             }
         })
         setStylesheet();
-        $("#centreBackground").css("background-image", 'url("' + preferences.backgroundImage + '")');
+        $("#centre-background").css("background-image", 'url("' + preferences.backgroundImage + '")');
         $("#scramble").css("text-align", preferences.scrambleAlign);
         $("#scramble").css("font-size", (preferences.scrambleSize * 10) + "px");
         $("#scramble").css("line-height", (preferences.scrambleSize * 10) + "px");
@@ -132,7 +132,7 @@ var prefs = function() {
 
             $("#timer")[0].innerHTML = (0).toFixed(preferences.timerDetail);
             writeTheme(preferences.customTheme);
-            $("#centreBackground").css("background-image", 'url("' + preferences.backgroundImage + '")')
+            $("#centre-background").css("background-image", 'url("' + preferences.backgroundImage + '")')
             $("#scramble").css("text-align", preferences.scrambleAlign);
 
             if (preferences.stackmat) {
@@ -189,7 +189,7 @@ var prefs = function() {
     }
 
     // Initialise preferences dialog
-    $("#dialogPreferences").dialog({
+    $("#dialog-preferences").dialog({
         autoOpen:false,
         modal:true,
         show:"fade",
@@ -213,11 +213,11 @@ var prefs = function() {
 
     // Open preferences dialog
     function openPreferences() {
-        if ($('#dialogPreferences').dialog('isOpen')) {
+        if ($('#dialog-preferences').dialog('isOpen')) {
             closePreferences();
         } else {
-            $("#dialogPreferences").dialog("open")
-            disableAllElements("preferencesButton");
+            $("#dialog-preferences").dialog("open")
+            disableAllElements("preferences-button");
             globals.menuOpen = true;
         }
     }
@@ -236,7 +236,7 @@ var prefs = function() {
 
         timer.clearTimer();
 
-        $("#dialogPreferences").dialog("close");
+        $("#dialog-preferences").dialog("close");
 
         record.setupRecorder();
         setStylesheet();
@@ -351,7 +351,7 @@ var prefs = function() {
                         return;
                     }
                     events.mergeEvents(result);
-                    events.setEventOptions($("#eventSelect")[0]);
+                    events.setEventOptions($("#event-select")[0]);
                 })
             }
         });
@@ -407,14 +407,14 @@ var prefs = function() {
                 globals.menuOpen = true;
                 disableAllElements();
                 events.setEventOptions($("#eventSelectCSTimer")[0]);
-                $("#dialogCSTimer").dialog("open");
+                $("#dialog-cs-timer").dialog("open");
                 importCSTime(false);
             });
         }
     })}
 
     // Initialise csTimer import dialog
-    $("#dialogCSTimer").dialog({
+    $("#dialog-cs-timer").dialog({
         autoOpen:false,
         modal:true,
         hide:"fade",
@@ -450,7 +450,7 @@ var prefs = function() {
                     events.getCurrentSession().records[i].comment = CSData[currentCS][i][2];
                 }
                 events.shouldUpdateStats(true);
-                events.setSessionOptions($("#sessionSelect")[0]);
+                events.setSessionOptions($("#session-select")[0]);
                 events.updateRecords(true);
                 currentCS++;
             }
@@ -468,14 +468,14 @@ var prefs = function() {
             }
         } else {
             globals.menuOpen = false;
-            $("#dialogCSTimer").dialog("close");
+            $("#dialog-cs-timer").dialog("close");
             enableAllElements();
         }
     }
 
     function cancelCSTime() {
         globals.menuOpen = false;
-        $("#dialogCSTimer").dialog("close");
+        $("#dialog-cs-timer").dialog("close");
         enableAllElements();
     }
 

@@ -1,4 +1,4 @@
-#windowBar {
+#window-bar {
     -webkit-app-region: drag;
     position: fixed;
     top:0px;
@@ -14,7 +14,7 @@
     left:0px;
 }
 
-#scrambleContainer {
+#scramble-container {
     position: fixed;
     top:27px;
     right: 10px;

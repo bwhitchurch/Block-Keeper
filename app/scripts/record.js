@@ -6,7 +6,7 @@
 const record = function() {
 
     // Initialize dialog to present recorded video
-    $("#dialogPreview").dialog({
+    $("#dialog-preview").dialog({
         autoOpen:false,
         modal:true,
         show:"fade",
@@ -22,10 +22,10 @@ const record = function() {
         if (evt.keyCode === $.ui.keyCode.ESCAPE) {
             closePreview()
         } else if (evt.keyCode === $.ui.keyCode.SPACE){
-            if (document.getElementById("previewVideo").paused) {
-                document.getElementById("previewVideo").play();
+            if (document.getElementById("preview-video").paused) {
+                document.getElementById("preview-video").play();
             } else {
-                document.getElementById("previewVideo").pause();
+                document.getElementById("preview-video").pause();
             }
         } else if (evt.keyCode === 13) {
             closePreview();
@@ -35,7 +35,7 @@ const record = function() {
     });
     
     // Disable button to view it by default
-    disableElement("#previewButton")
+    disableElement("#preview-button")
     
     // If a video has been recorded and is viewable
     var hasVideo = false;
@@ -93,8 +93,8 @@ const record = function() {
             recorder.initRecorder();
             recorder.startRecording();
             recording = true;
-            disableElement("#previewButton");
-            $("#previewButton").addClass("loading");
+            disableElement("#preview-button");
+            $("#preview-button").addClass("loading");
         }
     }
 
@@ -114,9 +114,9 @@ const record = function() {
             finishedRecorder.stopRecording(function(vidurl) {
                 recording = false;
                 hasVideo = true;
-                enableElement("#previewButton");
-                $("#previewButton").removeClass("loading");
-                document.getElementById("previewVideo").src = vidurl;
+                enableElement("#preview-button");
+                $("#preview-button").removeClass("loading");
+                document.getElementById("preview-video").src = vidurl;
                 if (preferences.autosaveLocation !== "") {
                     autosaveVideo(finishedRecorder.blob);
                 }
@@ -139,8 +139,8 @@ const record = function() {
             finishedRecorder.stopRecording(function(vidurl) {
                 recording = false;
                 if (hasVideo) {
-                    enableElement("#previewButton");
-                    $("#previewButton").removeClass("loading");
+                    enableElement("#preview-button");
+                    $("#preview-button").removeClass("loading");
                 }
             });
         }
@@ -148,18 +148,18 @@ const record = function() {
 
     // Show the dialog which presents the recording
     function openPreview() {
-        if ($('#dialogPreview').dialog('isOpen')) {
+        if ($('#dialog-preview').dialog('isOpen')) {
             closePreview();
         } else { 
-            $("#dialogPreview").dialog("open");
-            disableAllElements("previewButton");
+            $("#dialog-preview").dialog("open");
+            disableAllElements("preview-button");
             globals.menuOpen = true;
         }
     }
 
     // Close recording dialog
     function closePreview() {
-        $("#dialogPreview").dialog("close");
+        $("#dialog-preview").dialog("close");
         enableAllElements();
         globals.menuOpen = false;
     }

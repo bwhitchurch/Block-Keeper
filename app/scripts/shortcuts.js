@@ -37,7 +37,7 @@
                 events.deleteRecord();
             } else if (message === "CommandOrControl+N") {
                 events.createSession();
-                events.setSessionOptions($("#sessionSelect")[0]);
+                events.setSessionOptions($("#session-select")[0]);
             } else if (message === "CommandOrControl+Left") {
                 scramble.previousScramble();
             } else if (message === "CommandOrControl+Right") {

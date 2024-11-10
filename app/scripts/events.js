@@ -5,15 +5,15 @@
 
 var events = (function () {
     // Stats document elements
-    var eventSelect = document.getElementById("eventSelect");
-    var sessionSelect = document.getElementById("sessionSelect");
+    var eventSelect = document.getElementById("event-select");
+    var sessionSelect = document.getElementById("session-select");
     var sessionSolves = document.getElementById("sessionSolves");
     var sessionMean = document.getElementById("sessionMean");
     var sessionMedian = document.getElementById("sessionMedian");
     var sessionSD = document.getElementById("sessionSD");
-    var sessionRecordsTable = document.getElementById("sessionRecords");
-    var sessionStatsTable = document.getElementById("sessionStats");
-    var sessionButtonsDiv = document.getElementById("sessionButtons");
+    var sessionRecordsTable = document.getElementById("session-records");
+    var sessionStatsTable = document.getElementById("session-stats");
+    var sessionButtonsDiv = document.getElementById("session-buttons");
 
     // All events, holding all session and record data
     // These are the default events and settings
@@ -569,18 +569,18 @@ var events = (function () {
 
     // Show time dialog to add a custom time
     function openTimeDialog() {
-        if ($("#dialogAddTime").dialog("isOpen")) {
+        if ($("#dialog-add-time").dialog("isOpen")) {
             closeTimeDialog();
             return;
         }
-        $("#dialogAddTime").dialog("open");
+        $("#dialog-add-time").dialog("open");
         disableAllElements();
         globals.menuOpen = true;
     }
 
     // Close the time dialog
     function closeTimeDialog() {
-        $("#dialogAddTime").dialog("close");
+        $("#dialog-add-time").dialog("close");
         enableAllElements();
         globals.menuOpen = false;
     }
@@ -590,7 +590,7 @@ var events = (function () {
         var t = parseFloat(
             parseFloat(
                 document
-                    .getElementById("addTimeInput")
+                    .getElementById("add-time-input")
                     .value.split(":")
                     .reduce((acc, time) => 60 * acc + +time)
             ).toFixed(3)
@@ -600,12 +600,12 @@ var events = (function () {
             return;
         }
         $("#addTimeMessage")[0].innerHTML = "";
-        document.getElementById("addTimeInput").value = "";
+        document.getElementById("add-time-input").value = "";
 
         createRecord(t, "OK");
         if ($("#addTimeScramble")[0].checked) {
             getLastRecord().scramble =
-                document.getElementById("addScrambleInput").value;
+                document.getElementById("add-scramble-input").value;
         } else {
             getLastRecord().scramble = scramble.currentScramble();
         }
@@ -937,21 +937,21 @@ var events = (function () {
             createRow("Ao1000", 1000, calculatedTimes.ao1000s);
 
             // On hover record details
-            $("#sessionRecords td")
+            $("#session-records td")
                 .unbind()
                 .click(function (e) {
                     var column = parseInt($(this).index());
                     var row = parseInt($(this).parent().index());
                     if (
                         !globals.menuOpen ||
-                        ($("#dialogRecord").dialog("isOpen") &&
+                        ($("#dialog-record").dialog("isOpen") &&
                             row != currentRecord + 1)
                     ) {
                         if (column == 1 && row > 0) {
                             globals.menuOpen = true;
-                            if ($("#dialogRecord").dialog("isOpen")) {
+                            if ($("#dialog-record").dialog("isOpen")) {
                                 getCurrentRecord().comment =
-                                    $("#recordComment").val();
+                                    $("#record-comment").val();
                             }
                             currentRecord = row - 1;
                             var detail = preferences.timerDetail;
@@ -972,18 +972,18 @@ var events = (function () {
                                 formatTime(getCurrentRecord().time) +
                                 " " +
                                 getCurrentRecord().result;
-                            $("#recordTime").html(str);
+                            $("#record-time").html(str);
 
-                            //$("#recordComment").css("top", ($("#recordTime").height() +  $("#recordDate").height()) + "px");
+                            //$("#record-comment").css("top", ($("#record-time").height() +  $("#record-date").height()) + "px");
                             preferences.timerDetail = detail;
                             if (getCurrentRecord().comment != undefined) {
-                                $("#recordComment").val(
+                                $("#record-comment").val(
                                     getCurrentRecord().comment
                                 );
                             } else {
-                                $("#recordComment").val("");
+                                $("#record-comment").val("");
                             }
-                            $("#recordScramble").html(
+                            $("#record-scramble").html(
                                 getCurrentRecord().scramble
                             );
                             if (getCurrentRecord().date !== undefined) {
@@ -997,14 +997,14 @@ var events = (function () {
                                     hour: "2-digit",
                                     minute: "2-digit"
                                 };
-                                $("#recordDate").html(
+                                $("#record-date").html(
                                     d.toLocaleTimeString("en-us", options)
                                 );
                             } else {
-                                $("#recordDate").html("-");
+                                $("#record-date").html("-");
                             }
 
-                            $("#dialogRecord").dialog({
+                            $("#dialog-record").dialog({
                                 autoOpen: false,
                                 modal: true,
                                 hide: "fade",
@@ -1020,20 +1020,20 @@ var events = (function () {
                                 }
                             });
 
-                            $("#dialogRecord").dialog("open");
-                            disableAllElements("sessionRecordsContainer");
+                            $("#dialog-record").dialog("open");
+                            disableAllElements("session-records-container");
                             $(".selectable").prop("disabled", false);
                             $(".selectable").removeClass("disabled");
 
                             setTimeout(function () {
                                 var height = 20;
                                 height +=
-                                    $("#recordTime").height() +
-                                    $("#recordDate").height();
-                                $("#recordScramble").css("top", height + "px");
+                                    $("#record-time").height() +
+                                    $("#record-date").height();
+                                $("#record-scramble").css("top", height + "px");
                                 height += 100;
-                                $("#recordComment").css("top", height + "px");
-                                $("#dialogRecord").dialog({
+                                $("#record-comment").css("top", height + "px");
+                                $("#dialog-record").dialog({
                                     height: height + 2
                                 });
                             }, 0);
@@ -1043,13 +1043,13 @@ var events = (function () {
                     }
                 });
             setTimeout(function () {
-                extraHeight += $("#sessionDetails").height();
-                $("#sessionRecordsContainer").css(
+                extraHeight += $("#session-details").height();
+                $("#session-records-container").css(
                     "max-height",
                     "calc(100vh - (" + extraHeight + "px + 170px))"
                 );
                 if (scrollDown) {
-                    $("#sessionRecordsContainer").animate(
+                    $("#session-records-container").animate(
                         { scrollTop: Number.MAX_SAFE_INTEGER + "px" },
                         100
                     );
@@ -1066,13 +1066,13 @@ var events = (function () {
     //var ignoreClickout = true;
 
     function closeDialogRecord(save, didDelete = false) {
-        if ($("#dialogRecord").dialog("isOpen")) {
+        if ($("#dialog-record").dialog("isOpen")) {
             enableAllElements();
             globals.menuOpen = false;
             if (!didDelete && getCurrentRecord() != undefined) {
-                getCurrentRecord().comment = $("#recordComment").val();
+                getCurrentRecord().comment = $("#record-comment").val();
             }
-            $("#dialogRecord").dialog("close");
+            $("#dialog-record").dialog("close");
             if (save) {
                 saveSessions();
             }
@@ -1084,23 +1084,23 @@ var events = (function () {
     // Toggle session options showing
     function toggleSessionButtons() {
         if (getCurrentEvent().sessions.length < 2) {
-            disableElement("#deleteSessionButton");
+            disableElement("#delete-session-button");
         } else {
-            enableElement("#deleteSessionButton");
+            enableElement("#delete-session-button");
         }
         if (sessionButtonsShowing) {
             var newElement = document.createElement("select");
-            newElement.id = "sessionSelect";
+            newElement.id = "session-select";
             newElement.title = "Session select";
             newElement.onchange = setSession;
             getCurrentSession().name = sessionSelect.value;
             document
-                .getElementById("sessionContainer")
+                .getElementById("session-container")
                 .replaceChild(newElement, sessionSelect);
-            sessionSelect = document.getElementById("sessionSelect");
+            sessionSelect = document.getElementById("session-select");
             setSessionOptions(sessionSelect);
             newElement.value = currentSession;
-            $("#sessionButtons").animate({ height: "0px" }, 200);
+            $("#session-buttons").animate({ height: "0px" }, 200);
             sessionButtonsShowing = false;
             enableStats();
             globals.menuOpen = false;
@@ -1108,13 +1108,13 @@ var events = (function () {
             var newElement = document.createElement("input");
             newElement.type = "text";
             newElement.title = "Session name";
-            newElement.id = "sessionSelectText";
+            newElement.id = "session-select-text";
             newElement.value = getCurrentSession().name;
             document
-                .getElementById("sessionContainer")
+                .getElementById("session-container")
                 .replaceChild(newElement, sessionSelect);
-            sessionSelect = document.getElementById("sessionSelectText");
-            $("#sessionButtons").animate({ height: "80px" }, 200);
+            sessionSelect = document.getElementById("session-select-text");
+            $("#session-buttons").animate({ height: "80px" }, 200);
             sessionButtonsShowing = true;
             disableStats();
             globals.menuOpen = true;
@@ -1128,7 +1128,7 @@ var events = (function () {
         sessionSelect.value = getCurrentSession().name;
         updateRecords(true);
         if (getCurrentEvent().sessions.length > 1) {
-            enableElement("#deleteSessionButton");
+            enableElement("#delete-session-button");
         }
     }
 
@@ -1137,17 +1137,17 @@ var events = (function () {
         if (getCurrentEvent().sessions.length > 1) {
             deleteSession();
             var newElement = document.createElement("select");
-            newElement.id = "sessionSelect";
+            newElement.id = "session-select";
             newElement.onchange = setSession;
             document
-                .getElementById("sessionContainer")
+                .getElementById("session-container")
                 .replaceChild(newElement, sessionSelect);
-            sessionSelect = document.getElementById("sessionSelect");
+            sessionSelect = document.getElementById("session-select");
             setSessionOptions(sessionSelect);
             sessionButtonsShowing = false;
             enableStats();
             updateRecords(true);
-            $("#sessionButtons").animate({ height: "0px" }, 200);
+            $("#session-buttons").animate({ height: "0px" }, 200);
         }
     }
 
@@ -1159,7 +1159,7 @@ var events = (function () {
         }
     }
 
-    $("#dialogTransferSession")
+    $("#dialog-transfer-session")
         .dialog({
             autoOpen: false,
             modal: true,
@@ -1178,7 +1178,7 @@ var events = (function () {
 
     // Open transfer session dialog
     function transferSessionButton() {
-        $("#dialogTransferSession").dialog("open");
+        $("#dialog-transfer-session").dialog("open");
         toggleSessionButtons();
         setEventOptions($("#eventSelectTransfer")[0]);
         disableAllElements();
@@ -1186,7 +1186,7 @@ var events = (function () {
 
     // Move a session to an event
     function transferSession() {
-        $("#dialogTransferSession").dialog("close");
+        $("#dialog-transfer-session").dialog("close");
         var sess = getCurrentEvent().sessions.splice(currentSession, 1);
         currentEvent = $("#eventSelectTransfer")[0].value;
         getCurrentEvent().sessions.push(sess[0]);
@@ -1197,10 +1197,10 @@ var events = (function () {
 
     // Hide the session stats
     function disableStats() {
-        disableAllElements("sessionSelectText");
-        enableElement("#sessionContainer");
-        enableElement("#sessionButton");
-        enableElement("#sessionButtons");
+        disableAllElements("session-select-text");
+        enableElement("#session-container");
+        enableElement("#session-button");
+        enableElement("#session-buttons");
         globals.menuOpen = true;
     }
 
@@ -1259,7 +1259,7 @@ var events = (function () {
     })
 */
     // Create dialog record to view record details
-    $("#dialogRecord").dialog({
+    $("#dialog-record").dialog({
         autoOpen: false,
         modal: true,
         width: "199",
@@ -1267,7 +1267,7 @@ var events = (function () {
     });
 
     // Create add time dialog
-    $("#dialogAddTime")
+    $("#dialog-add-time")
         .dialog({
             autoOpen: false,
             modal: true,
@@ -1286,7 +1286,7 @@ var events = (function () {
             evt.stopPropagation();
         });
 
-    $("#dialogShowInfo")
+    $("#dialog-show-info")
         .dialog({
             autoOpen: false,
             modal: true,
@@ -1310,7 +1310,7 @@ var events = (function () {
             evt.stopPropagation();
         });
 
-    $("#dialogManageEvents")
+    $("#dialog-manage-events")
         .dialog({
             autoOpen: false,
             modal: true,
@@ -1340,7 +1340,7 @@ var events = (function () {
         (function () {
             const event = internalEvents[index];
             const tr = list.appendChild(document.createElement("tr"));
-            //tr.className = "eventItem";
+            //tr.className = "event-item";
 
             const enable = tr
                 .appendChild(document.createElement("td"))
@@ -1456,7 +1456,7 @@ var events = (function () {
                             "Do you want to remove this event? All of it's sessions will also be deleted."
                         )
                     ) {
-                        let scroll = $("#eventsList")[0].scrollTop;
+                        let scroll = $("#events-list")[0].scrollTop;
                         let n = event.name;
                         removeEventsList();
                         for (let i = 0; i < internalEvents.length; ++i) {
@@ -1466,11 +1466,11 @@ var events = (function () {
                             }
                         }
                         for (var i = 0; i < internalEvents.length; i++) {
-                            addEventItem($("#eventsList")[0], i);
+                            addEventItem($("#events-list")[0], i);
                         }
-                        $("#eventsList").sortable();
-                        $("#eventsList").disableSelection();
-                        $("#eventsList")[0].scrollTop = scroll;
+                        $("#events-list").sortable();
+                        $("#events-list").disableSelection();
+                        $("#events-list")[0].scrollTop = scroll;
                     }
                 };
             }
@@ -1484,14 +1484,14 @@ var events = (function () {
             closeEvents();
             return;
         }
-        const eventsList = document.getElementById("eventsList");
+        const eventsList = document.getElementById("events-list");
         for (var i = 0; i < internalEvents.length; i++) {
             addEventItem(eventsList, i);
         }
-        $("#eventsList").sortable();
-        $("#eventsList").disableSelection();
-        $("#dialogManageEvents").dialog("open");
-        disableAllElements("eventButton");
+        $("#events-list").sortable();
+        $("#events-list").disableSelection();
+        $("#dialog-manage-events").dialog("open");
+        disableAllElements("event-button");
         globals.menuOpen = true;
     }
 
@@ -1508,15 +1508,15 @@ var events = (function () {
             splits: 1
         };
         internalEvents.push(newEvent);
-        addEventItem($("#eventsList")[0], internalEvents.length - 1);
-        $("#eventsList").sortable();
-        $("#eventsList").disableSelection();
-        $("#eventsList")[0].scrollTop = Number.MAX_SAFE_INTEGER;
+        addEventItem($("#events-list")[0], internalEvents.length - 1);
+        $("#events-list").sortable();
+        $("#events-list").disableSelection();
+        $("#events-list")[0].scrollTop = Number.MAX_SAFE_INTEGER;
     }
 
     // Remove all event items and reorder events in the lists order
     function removeEventsList() {
-        var eventsList = document.getElementById("eventsList");
+        var eventsList = document.getElementById("events-list");
         var newEvents = [];
         while (eventsList.firstChild) {
             const event = eventsList.firstChild;
@@ -1547,7 +1547,7 @@ var events = (function () {
     function closeEvents() {
         removeEventsList();
         saveSessions();
-        $("#dialogManageEvents").dialog("close");
+        $("#dialog-manage-events").dialog("close");
         enableAllElements();
         globals.menuOpen = false;
     }
@@ -1759,14 +1759,14 @@ var events = (function () {
             }
         }
 
-        $("#messageShowInfo").html(str);
-        $("#dialogShowInfo").dialog("open");
+        $("#message-show-info").html(str);
+        $("#dialog-show-info").dialog("open");
         disableAllElements();
         globals.menuOpen = true;
     }
 
     function closeShowInfo() {
-        $("#dialogShowInfo").dialog("close");
+        $("#dialog-show-info").dialog("close");
         enableAllElements();
         globals.menuOpen = false;
     }

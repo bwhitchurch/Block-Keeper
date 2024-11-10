@@ -4,7 +4,7 @@
 // Created by Dallas McNeil
 
 var tools = function() {
-    var toolSelect = document.getElementById("toolSelect");
+    var toolSelect = document.getElementById("tool-select");
     var tools = document.getElementById("tools");
     // Canvases, or elements to draw/place elemnts in
     var canvases = [];
@@ -25,7 +25,7 @@ var tools = function() {
         toolTypes.splice(index, 1);
         toolOptions.splice(index, 1);
         // Sort list of tools to add
-        $("#toolSelect").html($("#toolSelect option").sort(function (a, b) {
+        $("#tool-select").html($("#tool-select option").sort(function (a, b) {
             if (a.text === b.text) {
                 return 0;
             } else if (a.text < b.text) {
@@ -48,7 +48,7 @@ var tools = function() {
         toolTypes.push(toolSelect.value);
         tool.className = "tool";
         var toolClose = document.createElement("button"); 
-        toolClose.className = "cross closeTool";
+        toolClose.className = "cross close-tool";
         toolClose.title = "Remove Tool";
         toolClose.onclick = function() {
             for (var i=0;i<tools.children.length;i++) {
@@ -67,16 +67,16 @@ var tools = function() {
             toolCanvas = document.createElement("div");
             var startStopButton = document.createElement("button");
             startStopButton.onclick = startStopMetronome;
-            startStopButton.id = "metronomeStartStopButton";
+            startStopButton.id = "metronome-start-stop-button";
             startStopButton.innerHTML = "Start";
             var BPMSlider = document.createElement("input");
             BPMSlider.type = "range";
             BPMSlider.min = "20";
             BPMSlider.max = "240";
             BPMSlider.value = preferences.metronomeBPM + "";
-            BPMSlider.id = "metronomeBPMSlider";
+            BPMSlider.id = "metronome-bpm-slider";
             var BPMLabel = document.createElement("p");
-            BPMLabel.id = "metronomeBPMLabel";
+            BPMLabel.id = "metronome-bpm-label";
             BPMLabel.innerHTML = preferences.metronomeBPM + "<span style='font-size:15px'>BPM</span>";
             BPMSlider.oninput = function () {
                 BPMLabel.innerHTML = BPMSlider.value + "<span style='font-size:15px'>BPM</span>";
@@ -173,13 +173,13 @@ var tools = function() {
         if (metronomePlaying) {
             metronomePlaying = false;
             clearInterval(metronomeID);
-            $("#metronomeStartStopButton")[0].innerHTML = "Start";
+            $("#metronome-start-stop-button")[0].innerHTML = "Start";
         } else {
             metronomePlaying = true;
             metronomeID = setInterval(function() {
                 clickSound.play();
-            }, 60000 / $("#metronomeBPMSlider")[0].value);
-            $("#metronomeStartStopButton")[0].innerHTML = "Stop";
+            }, 60000 / $("#metronome-bpm-slider")[0].value);
+            $("#metronome-start-stop-button")[0].innerHTML = "Stop";
         }
     }
 
