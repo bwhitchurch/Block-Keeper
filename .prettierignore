@@ -1,0 +1,6 @@
+build
+dist
+LICENSES
+node_modules
+app/vendor
+app/scripts/libs

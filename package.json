@@ -1,85 +1,98 @@
 {
-  "name": "blockkeeper",
-  "productName": "Block Keeper",
-  "main": "app/main.js",
-  "version": "2.2.0",
-  "author": {
-    "name": "Dallas McNeil",
-    "email": "dallas@dallasmcneil.com",
-    "url": "https://dallasmcneil.com"
-  },
-  "license": "GPL-3.0",
-  "description": "Cross-platform desktop cubing timer",
-  "homepage": "https://github.com/DallasMcNeil/Block-Keeper",
-  "scripts": {
-    "postinstall": "electron-builder install-app-deps",
-    "start": "electron .",
-    "dist": "electron-builder --win --ia32 squirrel;electron-builder --mac zip dmg;electron-builder --linux --ia32 --x64 --armv7l appimage",
-    "build": "electron-builder",
-    "lint:css": "stylelint **/*.{less,css}",
-    "lint:html": "linthtml **/*.html",
-    "lint": "npm run lint:html & npm run lint:css"
-  },
-  "devDependencies": {
-    "@linthtml/linthtml": "^0.10.1",
-    "electron": "^33.0.2",
-    "electron-builder": "25.1.8",
-    "electron-builder-lib": "20.23.1",
-    "electron-builder-squirrel-windows": "^25.1.8",
-    "electron-simple-publisher": "^2.0.1",
-    "postcss": "^8.4.47",
-    "postcss-less": "^6.0.0",
-    "stylelint": "^16.10.0",
-    "stylelint-config-standard": "^36.0.1"
-  },
-  "dependencies": {
-    "@electron/remote": "^2.1.2",
-    "ajv": "^8.17.1",
-    "blockkeeper": "file:",
-    "electron-json-storage": "^4.6.0",
-    "electron-shortcut": "^0.5.0",
-    "electron-simple-updater": "^2.0.11",
-    "electron-window-state": "^5.0.3",
-    "less": "^4.2.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DallasMcNeil/Block-Keeper"
-  },
-  "updater": {
-    "url": "https://raw.githubusercontent.com/DallasMcNeil/Block-Keeper/master/updates.json"
-  },
-  "build": {
-    "appId": "com.dallasmcneil.blockkeeper",
+    "name": "blockkeeper",
     "productName": "Block Keeper",
-    "electronCompile": false,
-    "electronVersion": "33.0.2",
-    "asar": false,
-    "files": [
-      "!README.md",
-      "!publisher.json",
-      "!updates.json",
-      "!docs/make",
-      "!dist",
-      "!LICENSES",
-      "!.npmrc",
-      "!setupVersion"
-    ],
-    "extraResources": [
-      "./node_modules/@electron/remote/**"
-    ],
-    "mac": {
-      "category": "public.app-category.utilities",
-      "target": "dmg"
+    "main": "app/main.js",
+    "version": "2.2.0",
+    "author": {
+        "name": "Dallas McNeil",
+        "email": "dallas@dallasmcneil.com",
+        "url": "https://dallasmcneil.com"
     },
-    "linux": {
-      "target": "AppImage"
+    "license": "GPL-3.0",
+    "description": "Cross-platform desktop cubing timer",
+    "homepage": "https://github.com/DallasMcNeil/Block-Keeper",
+    "scripts": {
+        "postinstall": "electron-builder install-app-deps",
+        "start": "electron .",
+        "dist": "electron-builder --win --ia32 squirrel;electron-builder --mac zip dmg;electron-builder --linux --ia32 --x64 --armv7l appimage",
+        "build": "electron-builder",
+        "lint:css": "stylelint **/*.{less,css}",
+        "lint:html": "linthtml **/*.html",
+        "lint:js": "eslint .",
+        "lint:spell": "cspell lint . --no-progress --relative --color --gitignore",
+        "lint": "npm run lint:spell & npm run lint:html & npm run lint:css & npm run lint:js",
+        "format": "prettier --write ."
     },
-    "win": {
-      "target": "squirrel"
+    "devDependencies": {
+        "@eslint/js": "^9.14.0",
+        "@linthtml/linthtml": "^0.10.1",
+        "@typescript-eslint/eslint-plugin": "^8.14.0",
+        "@typescript-eslint/parser": "^8.14.0",
+        "cspell": "^8.16.0",
+        "electron": "^33.0.2",
+        "electron-builder": "25.1.8",
+        "electron-builder-lib": "20.23.1",
+        "electron-builder-squirrel-windows": "^25.1.8",
+        "electron-simple-publisher": "^2.0.1",
+        "eslint": "^9.14.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-electron": "^7.0.0",
+        "globals": "^15.12.0",
+        "postcss": "^8.4.47",
+        "postcss-less": "^6.0.0",
+        "prettier": "^3.3.3",
+        "stylelint": "^16.10.0",
+        "stylelint-config-standard": "^36.0.1",
+        "typescript-eslint": "^8.14.0"
     },
-    "squirrelWindows": {
-      "iconUrl": "https://raw.githubusercontent.com/DallasMcNeil/Block-Keeper/master/build/icon.ico"
+    "dependencies": {
+        "@electron/remote": "^2.1.2",
+        "ajv": "^8.17.1",
+        "blockkeeper": "file:",
+        "electron-json-storage": "^4.6.0",
+        "electron-shortcut": "^0.5.0",
+        "electron-simple-updater": "^2.0.11",
+        "electron-window-state": "^5.0.3",
+        "less": "^4.2.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DallasMcNeil/Block-Keeper"
+    },
+    "updater": {
+        "url": "https://raw.githubusercontent.com/DallasMcNeil/Block-Keeper/master/updates.json"
+    },
+    "build": {
+        "appId": "com.dallasmcneil.blockkeeper",
+        "productName": "Block Keeper",
+        "electronCompile": false,
+        "electronVersion": "33.0.2",
+        "asar": false,
+        "files": [
+            "!README.md",
+            "!publisher.json",
+            "!updates.json",
+            "!docs/make",
+            "!dist",
+            "!LICENSES",
+            "!.npmrc",
+            "!setupVersion"
+        ],
+        "extraResources": [
+            "./node_modules/@electron/remote/**"
+        ],
+        "mac": {
+            "category": "public.app-category.utilities",
+            "target": "dmg"
+        },
+        "linux": {
+            "target": "AppImage"
+        },
+        "win": {
+            "target": "squirrel"
+        },
+        "squirrelWindows": {
+            "iconUrl": "https://raw.githubusercontent.com/DallasMcNeil/Block-Keeper/master/build/icon.ico"
+        }
     }
-  }
 }
